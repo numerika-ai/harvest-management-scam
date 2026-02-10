@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚩 SCAM ALERT: Harvest Management AG</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚩</text></svg>">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background: #1a1a2e;
+            color: #fff;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Language Toggle */
+        .lang-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            gap: 10px;
+        }
+
+        .lang-btn {
+            background: #16213e;
+            color: #fff;
+            border: 2px solid #0f3460;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn:hover {
+            background: #0f3460;
+            transform: translateY(-1px);
+        }
+
+        .lang-btn.active {
+            background: #e74c3c;
+            border-color: #e74c3c;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 60px 0 40px;
+            border-bottom: 3px solid #e74c3c;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: #e74c3c;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 10px rgba(231, 76, 60, 0.3);
+            letter-spacing: -0.02em;
+        }
+
+        .header .subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.4rem);
+            color: #ccc;
+            font-weight: 300;
+        }
+
+        /* Sections */
+        .section {
+            margin-bottom: 50px;
+            padding: 30px;
+            background: linear-gradient(135deg, #16213e 0%, #0f3460 100%);
+            border-radius: 12px;
+            border-left: 4px solid #e74c3c;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .section h2 {
+            color: #e74c3c;
+            font-size: clamp(1.5rem, 3vw, 2.2rem);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section h3 {
+            color: #fff;
+            font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+            margin-bottom: 15px;
+            margin-top: 25px;
+        }
+
+        .section p, .section li {
+            color: #e0e0e0;
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            margin-bottom: 12px;
+        }
+
+        /* Executive Summary */
+        .executive-summary {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: #fff;
+            text-align: center;
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            font-weight: 600;
+        }
+
+        .executive-summary h2 {
+            color: #fff;
+        }
+
+        /* Red Flags */
+        .red-flags-list {
+            list-style: none;
+            display: grid;
+            gap: 15px;
+        }
+
+        .red-flag-item {
+            background: rgba(231, 76, 60, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #e74c3c;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .red-flag-item.critical {
+            border-left-color: #e74c3c;
+        }
+
+        .red-flag-item.warning {
+            border-left-color: #f39c12;
+            background: rgba(243, 156, 18, 0.1);
+        }
+
+        .flag-badge {
+            font-size: 1.2rem;
+            min-width: 30px;
+        }
+
+        /* Tables */
+        .team-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: rgba(22, 33, 62, 0.5);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .team-table th,
+        .team-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #0f3460;
+        }
+
+        .team-table th {
+            background: #e74c3c;
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .team-table tr:hover {
+            background: rgba(231, 76, 60, 0.05);
+        }
+
+        /* Phases */
+        .phases {
+            display: grid;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .phase {
+            background: rgba(22, 33, 62, 0.7);
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #e74c3c;
+            position: relative;
+        }
+
+        .phase::before {
+            content: attr(data-phase);
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            background: #e74c3c;
+            color: #fff;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .phase h4 {
+            color: #e74c3c;
+            margin-bottom: 10px;
+            margin-top: 10px;
+        }
+
+        /* Protection Tips */
+        .protection-list {
+            display: grid;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .protection-item {
+            background: rgba(39, 174, 96, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #27ae60;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 2px solid #0f3460;
+            margin-top: 50px;
+            background: rgba(15, 52, 96, 0.3);
+        }
+
+        .footer p {
+            color: #ccc;
+            margin-bottom: 10px;
+        }
+
+        /* Links */
+        a {
+            color: #e74c3c;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+
+        a:hover {
+            border-bottom-color: #e74c3c;
+        }
+
+        /* Hidden language sections */
+        .lang-section {
+            display: block;
+        }
+
+        .lang-section.hidden {
+            display: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            .header {
+                padding: 40px 0 20px;
+            }
+
+            .section {
+                padding: 20px;
+                margin-bottom: 30px;
+            }
+
+            .lang-toggle {
+                top: 10px;
+                right: 10px;
+            }
+
+            .team-table {
+                font-size: 0.85rem;
+            }
+
+            .team-table th,
+            .team-table td {
+                padding: 10px 8px;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Language Toggle -->
+    <div class="lang-toggle">
+        <button class="lang-btn active" onclick="setLanguage('en')" id="btn-en">EN</button>
+        <button class="lang-btn" onclick="setLanguage('pl')" id="btn-pl">PL</button>
+    </div>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>🚩 <span class="lang-section" id="header-title-en">SCAM ALERT: Harvest Management AG</span><span class="lang-section hidden" id="header-title-pl">OSTRZEŻENIE: Harvest Management AG</span></h1>
+            <div class="subtitle">
+                <span class="lang-section" id="header-subtitle-en">Due Diligence Investigation Report — February 2026</span>
+                <span class="lang-section hidden" id="header-subtitle-pl">Raport z Due Diligence — Luty 2026</span>
+            </div>
+        </div>
+
+        <!-- Executive Summary -->
+        <section class="section executive-summary">
+            <h2>
+                <span class="lang-section" id="exec-title-en">📋 Executive Summary</span>
+                <span class="lang-section hidden" id="exec-title-pl">📋 Streszczenie</span>
+            </h2>
+            <div class="lang-section" id="exec-content-en">
+                <p><strong>HIGH FRAUD RISK</strong></p>
+                <p>Izan Ferrer contacts as "Chief Consulting Officer" from harvest-managementag.com</p>
+                <p>In reality: HR Manager at Centauro Rent a Car (car rental, Alicante, Spain)</p>
+                <p>Website impersonates legitimate Swiss company Harvest Asset Management AG (CHE-137.068.777)</p>
+            </div>
+            <div class="lang-section hidden" id="exec-content-pl">
+                <p><strong>WYSOKIE RYZYKO OSZUSTWA</strong></p>
+                <p>Izan Ferrer kontaktuje się jako "Chief Consulting Officer" z harvest-managementag.com</p>
+                <p>W rzeczywistości: HR Manager w Centauro Rent a Car (wypożyczalnia aut, Alicante, Hiszpania)</p>
+                <p>Strona podszywa się pod prawdziwą szwajcarską firmę Harvest Asset Management AG (CHE-137.068.777)</p>
+            </div>
+        </section>
+
+        <!-- Red Flags -->
+        <section class="section">
+            <h2>
+                🚨 <span class="lang-section" id="flags-title-en">Red Flags</span>
+                <span class="lang-section hidden" id="flags-title-pl">Czerwone Flagi</span>
+            </h2>
+            <ul class="red-flags-list">
+                <li class="red-flag-item critical">
+                    <span class="flag-badge">🔴</span>
+                    <span class="lang-section" id="flag1-en">Domain registered 2025-12-18 (2 months ago!)</span>
+                    <span class="lang-section hidden" id="flag1-pl">Domena zarejestrowana 18.12.2025 (2 miesiące temu!)</span>
+                </li>
+                <li class="red-flag-item critical">
+                    <span class="flag-badge">🔴</span>
+                    <span class="lang-section" id="flag2-en">Parking DNS (NS1.DNS-PARKING.COM)</span>
+                    <span class="lang-section hidden" id="flag2-pl">DNS parkingowe (NS1.DNS-PARKING.COM)</span>
+                </li>
+                <li class="red-flag-item critical">
+                    <span class="flag-badge">🔴</span>
+                    <span class="lang-section" id="flag3-en">Three different company names on one page</span>
+                    <span class="lang-section hidden" id="flag3-pl">Trzy różne nazwy firmy na jednej stronie</span>
+                </li>
+                <li class="red-flag-item critical">
+                    <span class="flag-badge">🔴</span>
+                    <span class="lang-section" id="flag4-en">AI-generated website (Hostinger Website Builder, template: "aigenerated")</span>
+                    <span class="lang-section hidden" id="flag4-pl">Strona AI-generated (Hostinger Website Builder, template: "aigenerated")</span>
+                </li>
+                <li class="red-flag-item critical">
+                    <span class="flag-badge">🔴</span>
+                    <span class="lang-section" id="flag5-en">Copied registration data from real company (UID CHE-137.068.777, number CH-130.3.019.062-4)</span>
+                    <span class="lang-section hidden" id="flag5-pl">Skopiowane dane rejestrowe prawdziwej firmy (UID CHE-137.068.777, numer CH-130.3.019.062-4)</span>
+                </li>
+                <li class="red-flag-item critical">
+                    <span class="flag-badge">🔴</span>
+                    <span class="lang-section" id="flag6-en">Izan Ferrer = HR Manager at Centauro Rent a Car, NOT a financier</span>
+                    <span class="lang-section hidden" id="flag6-pl">Izan Ferrer = HR Manager w Centauro Rent a Car, NIE finansista</span>
+                </li>
+                <li class="red-flag-item critical">
+                    <span class="flag-badge">🔴</span>
+                    <span class="lang-section" id="flag7-en">Zero connections between Ferrer and Harvest in any source</span>
+                    <span class="lang-section hidden" id="flag7-pl">Zero powiązań Ferrera z Harvest w jakimkolwiek źródle</span>
+                </li>
+                <li class="red-flag-item warning">
+                    <span class="flag-badge">🟡</span>
+                    <span class="lang-section" id="flag8-en">Grammar errors in formal correspondence ("please sent me")</span>
+                    <span class="lang-section hidden" id="flag8-pl">Błędy gramatyczne w formalnej korespondencji ("please sent me")</span>
+                </li>
+                <li class="red-flag-item warning">
+                    <span class="flag-badge">🟡</span>
+                    <span class="lang-section" id="flag9-en">Conflicting "60+ years" vs "40+ years" of experience</span>
+                    <span class="lang-section hidden" id="flag9-pl">Sprzeczne "60+ lat" vs "40+ lat" doświadczenia</span>
+                </li>
+                <li class="red-flag-item warning">
+                    <span class="flag-badge">🟡</span>
+                    <span class="lang-section" id="flag10-en">No title/position in email signature</span>
+                    <span class="lang-section hidden" id="flag10-pl">Brak tytułu/stanowiska w podpisie emaila</span>
+                </li>
+                <li class="red-flag-item critical">
+                    <span class="flag-badge">🔴</span>
+                    <span class="lang-section" id="flag11-en">No FINMA license</span>
+                    <span class="lang-section hidden" id="flag11-pl">Brak licencji FINMA</span>
+                </li>
+                <li class="red-flag-item critical">
+                    <span class="flag-badge">🔴</span>
+                    <span class="lang-section" id="flag12-en">Copyright © 2025, stock photos from Unsplash, video from Pexels</span>
+                    <span class="lang-section hidden" id="flag12-pl">Copyright © 2025, stockowe zdjęcia z Unsplash, video z Pexels</span>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Website Analysis -->
+        <section class="section">
+            <h2>
+                🌐 <span class="lang-section" id="website-title-en">Fake Website Analysis</span>
+                <span class="lang-section hidden" id="website-title-pl">Analiza Fałszywej Strony</span>
+            </h2>
+            <div class="lang-section" id="website-content-en">
+                <ul>
+                    <li><strong>Domain:</strong> harvest-managementag.com, registered 2025-12-18</li>
+                    <li><strong>Registrar:</strong> Hosting Concepts B.V. (Registrar.eu) — cheap Dutch registrar</li>
+                    <li><strong>DNS:</strong> NS1.DNS-PARKING.COM — parking domains</li>
+                    <li><strong>Platform:</strong> Hostinger Website Builder (template: "aigenerated"), SiteID: XiO5h0b4mPtjU59R</li>
+                    <li><strong>Server:</strong> OpenResty behind Cloudflare</li>
+                    <li><strong>Last modified:</strong> 2026-01-16</li>
+                    <li><strong>Company names:</strong> 3 different names used interchangeably</li>
+                    <li><strong>Services:</strong> Absurdly broad: from portfolio management to luxury villa construction</li>
+                </ul>
+            </div>
+            <div class="lang-section hidden" id="website-content-pl">
+                <ul>
+                    <li><strong>Domena:</strong> harvest-managementag.com, zarejestrowana 2025-12-18</li>
+                    <li><strong>Rejestrator:</strong> Hosting Concepts B.V. (Registrar.eu) — tani holenderski registrar</li>
+                    <li><strong>DNS:</strong> NS1.DNS-PARKING.COM — domeny parkingowe</li>
+                    <li><strong>Platforma:</strong> Hostinger Website Builder (template: "aigenerated"), SiteID: XiO5h0b4mPtjU59R</li>
+                    <li><strong>Serwer:</strong> OpenResty za Cloudflare</li>
+                    <li><strong>Ostatnia modyfikacja:</strong> 2026-01-16</li>
+                    <li><strong>Nazwy firmy:</strong> 3 różne nazwy używane zamiennie</li>
+                    <li><strong>Usługi:</strong> Absurdalnie szerokie: od zarządzania portfelem po budowę luksusowych willi</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Fake Team -->
+        <section class="section">
+            <h2>
+                👥 <span class="lang-section" id="team-title-en">The Fake Team</span>
+                <span class="lang-section hidden" id="team-title-pl">Fałszywy Zespół</span>
+            </h2>
+            <table class="team-table">
+                <thead>
+                    <tr>
+                        <th><span class="lang-section" id="team-name-en">Name</span><span class="lang-section hidden" id="team-name-pl">Imię</span></th>
+                        <th><span class="lang-section" id="team-position-en">Position</span><span class="lang-section hidden" id="team-position-pl">Stanowisko</span></th>
+                        <th><span class="lang-section" id="team-reality-en">Reality Check</span><span class="lang-section hidden" id="team-reality-pl">Sprawdzenie Rzeczywistości</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Bülent Eser</td>
+                        <td>Managing Director</td>
+                        <td class="lang-section" id="team-bulent-en">REAL person (Swiss register) — identity STOLEN. CV on fake site unverified (claims JP Morgan, BlackRock)</td>
+                        <td class="lang-section hidden" id="team-bulent-pl">PRAWDZIWA osoba (szwajcarski rejestr) — tożsamość SKRADZIONA. CV na fałszywej stronie niezweryfikowane (twierdzi JP Morgan, BlackRock)</td>
+                    </tr>
+                    <tr>
+                        <td>Ethan Chatila</td>
+                        <td>CEO</td>
+                        <td class="lang-section" id="team-ethan-en">Claims 17 years HSBC — DOES NOT EXIST online</td>
+                        <td class="lang-section hidden" id="team-ethan-pl">Twierdzi 17 lat HSBC — NIE ISTNIEJE w internecie</td>
+                    </tr>
+                    <tr>
+                        <td>Alexandre Blocher</td>
+                        <td>CFO</td>
+                        <td class="lang-section" id="team-alex-en">Claims World Bank, JP Morgan — DOES NOT EXIST online</td>
+                        <td class="lang-section hidden" id="team-alex-pl">Twierdzi World Bank, JP Morgan — NIE ISTNIEJE w internecie</td>
+                    </tr>
+                    <tr>
+                        <td>Stephan Grey</td>
+                        <td>COO</td>
+                        <td class="lang-section" id="team-stephan-en">No description at all</td>
+                        <td class="lang-section hidden" id="team-stephan-pl">Brak jakiegokolwiek opisu</td>
+                    </tr>
+                    <tr>
+                        <td>Izan Ferrer</td>
+                        <td>Chief Consulting Officer</td>
+                        <td class="lang-section" id="team-izan-en">No description. Actually HR Manager at Centauro Rent a Car</td>
+                        <td class="lang-section hidden" id="team-izan-pl">Brak opisu. W rzeczywistości HR Manager w Centauro Rent a Car</td>
+                    </tr>
+                    <tr>
+                        <td>Daniel Zedmann</td>
+                        <td>Consultant</td>
+                        <td class="lang-section" id="team-daniel-en">No description, generic email</td>
+                        <td class="lang-section hidden" id="team-daniel-pl">Brak opisu, ogólny email</td>
+                    </tr>
+                    <tr>
+                        <td>Elisabeth Hoffmann</td>
+                        <td>Chief Analytics Officer</td>
+                        <td class="lang-section" id="team-elisabeth-en">No description, generic email</td>
+                        <td class="lang-section hidden" id="team-elisabeth-pl">Brak opisu, ogólny email</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="margin-top: 20px; color: #e74c3c; font-weight: 600;">
+                <span class="lang-section" id="team-pattern-en">Pattern: Top 3 have elaborate (likely fabricated) CVs. Bottom 4 have ZERO description.</span>
+                <span class="lang-section hidden" id="team-pattern-pl">Wzorzec: Pierwsza trójka ma rozbudowane (prawdopodobnie sfabrykowane) CV. Ostatnia czwórka ma ZERO opisu.</span>
+            </p>
+        </section>
+
+        <!-- Who is Izan Ferrer -->
+        <section class="section">
+            <h2>
+                🔍 <span class="lang-section" id="izan-title-en">Who is Izan Ferrer Llorens?</span>
+                <span class="lang-section hidden" id="izan-title-pl">Kim jest Izan Ferrer Llorens?</span>
+            </h2>
+            <div class="lang-section" id="izan-content-en">
+                <ul>
+                    <li><strong>Real job:</strong> HR Manager at Centauro Rent a Car (car rental, Alicante, Spain)</li>
+                    <li><strong>LinkedIn:</strong> 4 profiles "Izan Ferrer" — none linked to finance/investment</li>
+                    <li><strong>Facebook:</strong> izan.ferrer.1</li>
+                    <li><strong>Instagram:</strong> @3owono</li>
+                    <li><strong>Phone:</strong> +34 697 96 81 25 (Spanish prefix)</li>
+                    <li><strong>Reality:</strong> ZERO connections to Harvest, Swiss finance, or any investment firm anywhere online</li>
+                </ul>
+            </div>
+            <div class="lang-section hidden" id="izan-content-pl">
+                <ul>
+                    <li><strong>Prawdziwa praca:</strong> HR Manager w Centauro Rent a Car (wypożyczalnia aut, Alicante, Hiszpania)</li>
+                    <li><strong>LinkedIn:</strong> 4 profile "Izan Ferrer" — żaden nie związany z finansami/inwestycjami</li>
+                    <li><strong>Facebook:</strong> izan.ferrer.1</li>
+                    <li><strong>Instagram:</strong> @3owono</li>
+                    <li><strong>Telefon:</strong> +34 697 96 81 25 (hiszpański prefiks)</li>
+                    <li><strong>Rzeczywistość:</strong> ZERO powiązań z Harvest, szwajcarskimi finansami lub jakąkolwiek firmą inwestycyjną w internecie</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Real Companies -->
+        <section class="section">
+            <h2>
+                ✅ <span class="lang-section" id="real-title-en">The Real Companies (victims of impersonation)</span>
+                <span class="lang-section hidden" id="real-title-pl">Prawdziwe Firmy (ofiary podszywania się)</span>
+            </h2>
+            <div class="lang-section" id="real-content-en">
+                <h3>1. Harvest Asset Management AG ✅</h3>
+                <ul>
+                    <li>CHE-137.068.777, Feusisberg</li>
+                    <li>Founded 2013 by Virgile Trevedy & Bülent Eser</li>
+                    <li>Legitimate Swiss company</li>
+                </ul>
+                
+                <h3>2. Swiss Harvest Asset Management AG ✅</h3>
+                <ul>
+                    <li>FINMA-licensed, sham.ch, Wollerau</li>
+                    <li>Tel: +41 41 552 08 88</li>
+                    <li>Legitimate Swiss financial services</li>
+                </ul>
+            </div>
+            <div class="lang-section hidden" id="real-content-pl">
+                <h3>1. Harvest Asset Management AG ✅</h3>
+                <ul>
+                    <li>CHE-137.068.777, Feusisberg</li>
+                    <li>Założona 2013 przez Virgile Trevedy & Bülent Eser</li>
+                    <li>Prawdziwa szwajcarska firma</li>
+                </ul>
+                
+                <h3>2. Swiss Harvest Asset Management AG ✅</h3>
+                <ul>
+                    <li>Licencja FINMA, sham.ch, Wollerau</li>
+                    <li>Tel: +41 41 552 08 88</li>
+                    <li>Prawdziwe szwajcarskie usługi finansowe</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- How This Scam Works -->
+        <section class="section">
+            <h2>
+                ⚙️ <span class="lang-section" id="scam-title-en">How This Scam Works</span>
+                <span class="lang-section hidden" id="scam-title-pl">Jak Działa To Oszustwo</span>
+            </h2>
+            <div class="phases">
+                <div class="phase" data-phase="Phase 1">
+                    <h4><span class="lang-section" id="phase1-title-en">Discovery</span><span class="lang-section hidden" id="phase1-title-pl">Odkrywanie</span></h4>
+                    <p class="lang-section" id="phase1-content-en">Find obscure real company in Swiss register</p>
+                    <p class="lang-section hidden" id="phase1-content-pl">Znajdź mało znaną prawdziwą firmę w szwajcarskim rejestrze</p>
+                </div>
+                <div class="phase" data-phase="Phase 2">
+                    <h4><span class="lang-section" id="phase2-title-en">Setup</span><span class="lang-section hidden" id="phase2-title-pl">Konfiguracja</span></h4>
+                    <p class="lang-section" id="phase2-content-en">Register similar domain, build AI-generated website</p>
+                    <p class="lang-section hidden" id="phase2-content-pl">Zarejestruj podobną domenę, zbuduj stronę wygenerowaną przez AI</p>
+                </div>
+                <div class="phase" data-phase="Phase 3">
+                    <h4><span class="lang-section" id="phase3-title-en">Impersonation</span><span class="lang-section hidden" id="phase3-title-pl">Podszywanie</span></h4>
+                    <p class="lang-section" id="phase3-content-en">Copy real company's registration data, team names</p>
+                    <p class="lang-section hidden" id="phase3-content-pl">Skopiuj dane rejestrowe prawdziwej firmy, imiona członków zespołu</p>
+                </div>
+                <div class="phase" data-phase="Phase 4">
+                    <h4><span class="lang-section" id="phase4-title-en">Contact</span><span class="lang-section hidden" id="phase4-title-pl">Kontakt</span></h4>
+                    <p class="lang-section" id="phase4-content-en">Contact property owners expressing "investment interest"</p>
+                    <p class="lang-section hidden" id="phase4-content-pl">Skontaktuj się z właścicielami nieruchomości wyrażając "zainteresowanie inwestycyjne"</p>
+                </div>
+                <div class="phase" data-phase="Phase 5">
+                    <h4><span class="lang-section" id="phase5-title-en">Fee Extraction</span><span class="lang-section hidden" id="phase5-title-pl">Wyciąganie Opłat</span></h4>
+                    <p class="lang-section" id="phase5-content-en">Request documents, then demand escalating fees (due diligence, deposit, compliance, notary)</p>
+                    <p class="lang-section hidden" id="phase5-content-pl">Żądaj dokumentów, następnie domagaj się rosnących opłat (due diligence, depozyt, compliance, notariusz)</p>
+                </div>
+                <div class="phase" data-phase="Phase 6">
+                    <h4><span class="lang-section" id="phase6-title-en">Disappearance</span><span class="lang-section hidden" id="phase6-title-pl">Zniknięcie</span></h4>
+                    <p class="lang-section" id="phase6-content-en">Disappear with money</p>
+                    <p class="lang-section hidden" id="phase6-content-pl">Zniknij z pieniędzmi</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Protection -->
+        <section class="section">
+            <h2>
+                🛡️ <span class="lang-section" id="protect-title-en">How to Protect Yourself</span>
+                <span class="lang-section hidden" id="protect-title-pl">Jak Się Chronić</span>
+            </h2>
+            <div class="protection-list">
+                <div class="protection-item">
+                    <strong><span class="lang-section" id="protect1-en">Check WHOIS</span><span class="lang-section hidden" id="protect1-pl">Sprawdź WHOIS</span></strong> — 
+                    <span class="lang-section" id="protect1-desc-en">Use who.is to check domain registration date</span>
+                    <span class="lang-section hidden" id="protect1-desc-pl">Użyj who.is aby sprawdzić datę rejestracji domeny</span>
+                </div>
+                <div class="protection-item">
+                    <strong><span class="lang-section" id="protect2-en">Check source code</span><span class="lang-section hidden" id="protect2-pl">Sprawdź kod źródłowy</span></strong> — 
+                    <span class="lang-section" id="protect2-desc-en">Ctrl+U → search for "hostinger", "wix", "aigenerated"</span>
+                    <span class="lang-section hidden" id="protect2-desc-pl">Ctrl+U → szukaj "hostinger", "wix", "aigenerated"</span>
+                </div>
+                <div class="protection-item">
+                    <strong><span class="lang-section" id="protect3-en">Verify FINMA license</span><span class="lang-section hidden" id="protect3-pl">Zweryfikuj licencję FINMA</span></strong> — 
+                    <span class="lang-section" id="protect3-desc-en">Check Swiss financial regulator database</span>
+                    <span class="lang-section hidden" id="protect3-desc-pl">Sprawdź bazę danych szwajcarskiego regulatora finansowego</span>
+                </div>
+                <div class="protection-item">
+                    <strong><span class="lang-section" id="protect4-en">Search team on LinkedIn</span><span class="lang-section hidden" id="protect4-pl">Szukaj zespołu na LinkedIn</span></strong> — 
+                    <span class="lang-section" id="protect4-desc-en">Verify professional backgrounds independently</span>
+                    <span class="lang-section hidden" id="protect4-desc-pl">Zweryfikuj doświadczenie zawodowe niezależnie</span>
+                </div>
+                <div class="protection-item">
+                    <strong><span class="lang-section" id="protect5-en">Never pay advance fees</span><span class="lang-section hidden" id="protect5-pl">Nigdy nie płać opłat z góry</span></strong> — 
+                    <span class="lang-section" id="protect5-desc-en">Legitimate firms don't demand upfront payments</span>
+                    <span class="lang-section hidden" id="protect5-desc-pl">Prawdziwe firmy nie żądają płatności z góry</span>
+                </div>
+                <div class="protection-item">
+                    <strong><span class="lang-section" id="protect6-en">Demand in-person meetings</span><span class="lang-section hidden" id="protect6-pl">Żądaj spotkań osobistych</span></strong> — 
+                    <span class="lang-section" id="protect6-desc-en">Visit their registered office address</span>
+                    <span class="lang-section hidden" id="protect6-desc-pl">Odwiedź ich zarejestrowany adres biura</span>
+                </div>
+                <div class="protection-item">
+                    <strong><span class="lang-section" id="protect7-en">Ask for references</span><span class="lang-section hidden" id="protect7-pl">Proś o referencje</span></strong> — 
+                    <span class="lang-section" id="protect7-desc-en">Request contact details of previous clients</span>
+                    <span class="lang-section hidden" id="protect7-desc-pl">Poproś o dane kontaktowe poprzednich klientów</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reporting -->
+        <section class="section">
+            <h2>
+                📞 <span class="lang-section" id="report-title-en">Where to Report</span>
+                <span class="lang-section hidden" id="report-title-pl">Gdzie Zgłaszać</span>
+            </h2>
+            <div class="lang-section" id="report-content-en">
+                <ul>
+                    <li><strong>FINMA:</strong> <a href="https://finma.ch">finma.ch</a> (unlicensed activity)</li>
+                    <li><strong>Domain registrar:</strong> abuse@registrar.eu</li>
+                    <li><strong>Real Harvest Asset Management AG:</strong> Contact them directly</li>
+                    <li><strong>Swiss Harvest:</strong> info@sham.ch</li>
+                    <li><strong>CERT Polska:</strong> <a href="https://cert.pl">cert.pl</a></li>
+                    <li><strong>Polish police:</strong> Local cybercrime unit</li>
+                </ul>
+            </div>
+            <div class="lang-section hidden" id="report-content-pl">
+                <ul>
+                    <li><strong>FINMA:</strong> <a href="https://finma.ch">finma.ch</a> (działalność bez licencji)</li>
+                    <li><strong>Rejestrator domeny:</strong> abuse@registrar.eu</li>
+                    <li><strong>Prawdziwa Harvest Asset Management AG:</strong> Skontaktuj się bezpośrednio</li>
+                    <li><strong>Swiss Harvest:</strong> info@sham.ch</li>
+                    <li><strong>CERT Polska:</strong> <a href="https://cert.pl">cert.pl</a></li>
+                    <li><strong>Polska policja:</strong> Lokalny wydział cyberprzestępczości</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p class="lang-section" id="footer1-en">This report was compiled as part of a due diligence investigation in February 2026.</p>
+        <p class="lang-section hidden" id="footer1-pl">Ten raport został sporządzony w ramach badania due diligence w lutym 2026.</p>
+        
+        <p style="color: #e74c3c; font-weight: 600; margin-top: 20px;">
+            <span class="lang-section" id="footer2-en">If you have been contacted by Izan Ferrer or harvest-managementag.com, do not send documents or money.</span>
+            <span class="lang-section hidden" id="footer2-pl">Jeśli skontaktował się z Tobą Izan Ferrer lub harvest-managementag.com, nie przesyłaj dokumentów ani pieniędzy.</span>
+        </p>
+        
+        <p style="margin-top: 15px; font-size: 0.9rem;">
+            <span class="lang-section" id="footer3-en">Sources: NorthData, business-monitor.ch, Swiss Handelsregister</span>
+            <span class="lang-section hidden" id="footer3-pl">Źródła: NorthData, business-monitor.ch, Swiss Handelsregister</span>
+        </p>
+    </div>
+
+    <script>
+        function setLanguage(lang) {
+            // Hide all sections
+            document.querySelectorAll('.lang-section').forEach(el => {
+                el.classList.add('hidden');
+            });
+            
+            // Show sections for selected language
+            document.querySelectorAll('.lang-section[id$="-' + lang + '"]').forEach(el => {
+                el.classList.remove('hidden');
+            });
+            
+            // Update button states
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.getElementById('btn-' + lang).classList.add('active');
+            
+            // Update document language
+            document.documentElement.lang = lang;
+        }
+        
+        // Initialize with English
+        document.addEventListener('DOMContentLoaded', function() {
+            setLanguage('en');
+        });
+    </script>
+</body>
+</html>
